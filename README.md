@@ -40,13 +40,23 @@ Man10サーバー用Minecraftプラグインテンプレート - プロフェッ
 
 ## 使用方法
 
-### プラグイン作成
+### 📦 初回セットアップ
 ```bash
-# 新しいプラグインを作成（TemplatePluginをベースに）
-create.sh MyAwesome myawesome
+# GitHubからテンプレートを取得
+git clone https://github.com/man10server/Man10TemplatePlugin.git
+cd Man10TemplatePlugin
+
+# 開発環境のセットアップ（初回のみ）
+./setup.sh
+```
+
+### ⚡ プラグイン作成（3秒）
+```bash
+# Man10TemplatePluginディレクトリで実行
+./new.sh MyAwesome myawesome
 
 # 作成されたプラグインディレクトリに移動
-cd plugins-src/MyAwesomePlugin
+cd ../MyAwesomePlugin
 ```
 
 ### 開発フロー
