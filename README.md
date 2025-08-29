@@ -1,4 +1,4 @@
-# TemplatePlugin v1.0.0
+# Man10TemplatePlugin v1.0.0
 
 [![Java](https://img.shields.io/badge/Java-21-orange)](https://adoptium.net/)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.9.24-blue)](https://kotlinlang.org/)
@@ -174,7 +174,7 @@ MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
 
 <div align="center">
 
-**🎮 TemplatePlugin v1.0.0**  
+**🎮 Man10TemplatePlugin v1.0.0**  
 *Professional Minecraft Plugin Development Template*
 
 [![Man10 Server](https://img.shields.io/badge/Man10-Server-red)](https://man10.red)

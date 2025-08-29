@@ -1,9 +1,9 @@
-name: TemplatePlugin
+name: Man10TemplatePlugin
 main: red.man10.template.TemplatePlugin
 version: ${version}
 api-version: '1.21'
 authors: [ man10 ]
-description: "Man10サーバー用プラグインテンプレート - 新しいプラグイン開発のベース"
+description: "Man10サーバー用プロフェッショナルプラグインテンプレート - 新しいプラグイン開発のベース"
 website: "https://man10.red"
 
 # 依存関係の設定

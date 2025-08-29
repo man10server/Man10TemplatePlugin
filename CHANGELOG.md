@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to TemplatePlugin will be documented in this file.
+All notable changes to Man10TemplatePlugin will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2024-08-30
 
 ### Added
-- 🚀 **初回リリース**: TemplatePlugin v1.0.0
+- 🚀 **初回リリース**: Man10TemplatePlugin v1.0.0
 - ⚡ **自動プラグイン作成**: `new.sh` による3秒プラグイン生成
 - 🔧 **環境自動セットアップ**: `setup.sh` による開発環境構築
 - 📦 **完全日本語対応**: コメント・ドキュメント・エラーメッセージ
