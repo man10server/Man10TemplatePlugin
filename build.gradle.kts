@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "red.man10"
-version = "1.1.1"
+version = "1.2.0"
 description = "Man10 Professional Minecraft Plugin Template"
 
 repositories {
