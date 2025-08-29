@@ -42,11 +42,14 @@ jobs:
       id: get_version
       run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
       
-    - name: Get plugin name
+    - name: Get plugin info
       id: get_plugin
       run: |
-        PLUGIN_NAME=$(ls build/libs/*Plugin-*.jar | head -1 | basename | sed 's/-[0-9].*//')
+        # Shadow JARファイルのみを取得（-all.jarを除外）
+        SHADOW_JAR=$(ls build/libs/*Plugin-*.jar | grep -v '\-all\.jar$' | head -1)
+        PLUGIN_NAME=$(basename "$SHADOW_JAR" | sed 's/-[0-9].*//')
         echo "PLUGIN_NAME=$PLUGIN_NAME" >> $GITHUB_OUTPUT
+        echo "SHADOW_JAR=$SHADOW_JAR" >> $GITHUB_OUTPUT
         
     - name: Create Release
       uses: softprops/action-gh-release@v1
@@ -75,7 +78,7 @@ jobs:
           - [開発ガイド](./AGENTS.md)
           
         files: |
-          build/libs/*.jar
+          ${{ steps.get_plugin.outputs.SHADOW_JAR }}
         draft: false
         prerelease: false
         generate_release_notes: true

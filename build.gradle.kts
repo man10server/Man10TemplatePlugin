@@ -40,3 +40,8 @@ tasks.shadowJar {
 
 tasks.build { dependsOn(tasks.shadowJar) }
 
+// 通常のjarタスクを無効化（shadowJarのみ使用）
+tasks.jar {
+    enabled = false
+}
+
