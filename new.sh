@@ -21,9 +21,9 @@ DEST_BASE="${3:-..}"  # Default to parent directory
 SRC_DIR="."
 DEST_DIR="${DEST_BASE}/${BaseName}Plugin"
 
-# Verify we're in TemplatePlugin directory
+# Verify we're in Man10TemplatePlugin directory
 if [[ ! -f "src/main/kotlin/red/man10/template/TemplatePlugin.kt" ]]; then
-  echo "❌ Error: This script must be run from within the TemplatePlugin directory"
+  echo "❌ Error: This script must be run from within the Man10TemplatePlugin directory"
   echo "💡 Expected to find: src/main/kotlin/red/man10/template/TemplatePlugin.kt"
   exit 1
 fi
@@ -34,7 +34,7 @@ if [[ -e "$DEST_DIR" ]]; then
 fi
 
 echo "🎯 Creating plugin: ${BaseName}Plugin"
-echo "📂 Source: TemplatePlugin (current directory)"
+echo "📂 Source: Man10TemplatePlugin (current directory)"
 echo "📁 Destination: $DEST_DIR"
 
 # Create destination directory
