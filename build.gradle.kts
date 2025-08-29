@@ -4,7 +4,8 @@ plugins {
 }
 
 group = "red.man10"
-version = "0.1.0-SNAPSHOT"
+version = "1.0.0"
+description = "Professional Minecraft Plugin Template for Man10 Server"
 
 repositories {
     mavenCentral()

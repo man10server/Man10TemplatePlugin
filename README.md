@@ -1,12 +1,23 @@
-# TemplatePlugin
+# TemplatePlugin v1.0.0
 
-Man10サーバー用プラグインテンプレート
+[![Java](https://img.shields.io/badge/Java-21-orange)](https://adoptium.net/)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.24-blue)](https://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/Gradle-8.5-green)](https://gradle.org/)
+[![Paper](https://img.shields.io/badge/Paper-1.21-yellow)](https://papermc.io/)
 
-## 概要
+Man10サーバー用Minecraftプラグインテンプレート - プロフェッショナル開発環境
 
-新しいプラグインを作成する際のベースとなるテンプレートプラグインです。
-基本的な機能（コマンド、イベントリスナー、設定ファイル）が含まれており、
-これをベースに独自のプラグインを開発できます。
+## 🎯 概要
+
+新しいMinecraftプラグインを**3秒で作成**できる、完全自動化されたテンプレートシステムです。  
+初心者から上級者まで、効率的なプラグイン開発をサポートします。
+
+### ✨ 特徴
+- **🚀 超高速セットアップ**: `./setup.sh` で環境構築完了
+- **⚡ 3秒プラグイン作成**: `./new.sh MyPlugin myplugin` 
+- **🔄 自動ビルド・デプロイ**: `./run.sh` で開発サイクル完結
+- **📦 完全自己完結**: 必要なものが全て含まれる
+- **🌐 日本語完全対応**: コメント・ドキュメント・エラーメッセージ
 
 ## 機能
 
@@ -17,11 +28,15 @@ Man10サーバー用プラグインテンプレート
 - **ログ出力**: プラグイン有効化/無効化時のログ
 
 ### 🛠️ 技術仕様
-- **言語**: Kotlin
-- **ビルドツール**: Gradle 8.5
-- **Java**: 21
-- **Paper API**: 1.21-R0.1-SNAPSHOT
-- **パッケージ**: `red.man10.template`
+
+| 項目 | バージョン | 説明 |
+|------|------------|------|
+| **Java** | OpenJDK 21 | 最新LTS版、自動インストール対応 |
+| **Kotlin** | 1.9.24 | 安定版、Java相互運用性 |
+| **Gradle** | 8.5 | Wrapper付き、オフライン対応 |
+| **Paper API** | 1.21-R0.1-SNAPSHOT | 最新Minecraft対応 |
+| **アーキテクチャ** | Plugin + Command + Listener | 標準的なプラグイン構成 |
+| **パッケージ** | `red.man10.template` | 自動置換対応 |
 
 ## 使用方法
 
@@ -128,8 +143,45 @@ ls -la build/libs/
 - [Kotlin 公式ドキュメント](https://kotlinlang.org/docs/)
 - [Gradle ドキュメント](https://docs.gradle.org/)
 
+## 📊 バージョン履歴
+
+### v1.0.0 (2024-08-30)
+- ✨ 初回リリース
+- 🚀 自動環境セットアップ機能
+- ⚡ 3秒プラグイン作成システム
+- 📦 完全日本語対応
+- 🔧 Gradle 8.5 + Kotlin 1.9.24 + Java 21構成
+- 🎯 Paper 1.21 API対応
+
+## 🤝 サポート・コントリビューション
+
+### 📞 サポート
+- **Issues**: [GitHub Issues](https://github.com/man10server/TemplatePlugin/issues)
+- **Discord**: Man10 Development Server
+- **Wiki**: [開発者Wiki](https://wiki.man10.red/development)
+
+### 🔧 コントリビューション
+1. Fork このリポジトリ
+2. Feature ブランチ作成 (`git checkout -b feature/AmazingFeature`)
+3. 変更をコミット (`git commit -m 'feat: Add AmazingFeature'`)
+4. ブランチにプッシュ (`git push origin feature/AmazingFeature`)
+5. Pull Request を作成
+
+### 📄 ライセンス
+MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
+
 ---
 
-**Man10 Plugin Development Template v1.0**  
-🔧 作成者: Man10 Development Team  
-📅 最終更新: 2024年8月
+<div align="center">
+
+**🎮 TemplatePlugin v1.0.0**  
+*Professional Minecraft Plugin Development Template*
+
+[![Man10 Server](https://img.shields.io/badge/Man10-Server-red)](https://man10.red)
+[![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-red)]()
+
+**🔧 作成者**: Man10 Development Team  
+**📅 最終更新**: 2024年8月30日  
+**🌟 Star**: [GitHub Repository](https://github.com/man10server/TemplatePlugin)
+
+</div>
