@@ -12,6 +12,9 @@ build/
 .DS_Store
 Thumbs.db
 
+# Deploy configuration (project-specific)
+# deploy.conf
+
 # Test plugins (created by new.sh)
 *Plugin/
 !TemplatePlugin/

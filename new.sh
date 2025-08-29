@@ -49,6 +49,10 @@ rm -rf "$DEST_DIR/.git"
 rm -f "$DEST_DIR/new.sh"
 rm -f "$DEST_DIR/README-template.md"
 
+# Copy deploy configuration template
+echo "📋 Setting up deploy configuration..."
+cp "$SRC_DIR/deploy.conf" "$DEST_DIR/deploy.conf"
+
 # Rename package directory
 if [[ -d "$DEST_DIR/src/main/kotlin/red/man10/template" ]]; then
   mkdir -p "$DEST_DIR/src/main/kotlin/red/man10"
@@ -134,6 +138,15 @@ set -euo pipefail
 SCRIPT_DIR="$(dirname "$0")"
 cd "$SCRIPT_DIR"
 
+# Load deploy configuration
+if [[ -f "deploy.conf" ]]; then
+  source deploy.conf
+else
+  echo "⚠️  deploy.conf not found, using default settings"
+  DEPLOY_TARGET="/home/man10/mc_net/dev/server/plugins"
+  SERVER_NAME="dev"
+fi
+
 # Deploy JAR to server
 shopt -s nullglob
 jars=(build/libs/*Plugin-*.jar)
@@ -143,8 +156,9 @@ if [[ ${#jars[@]} -eq 0 ]]; then
 fi
 
 JAR_FILE=$(ls -1t "${jars[@]}" | head -n1)
-cp "$JAR_FILE" "/home/man10/mc_net/dev/server/plugins/$(basename "$JAR_FILE")"
-echo "✅ Deployed: $JAR_FILE -> /home/man10/mc_net/dev/server/plugins/$(basename "$JAR_FILE")"
+cp "$JAR_FILE" "${DEPLOY_TARGET}/$(basename "$JAR_FILE")"
+echo "✅ Deployed: $JAR_FILE -> ${DEPLOY_TARGET}/$(basename "$JAR_FILE")"
+echo "🎯 Server: ${SERVER_NAME}"
 EOF
 
 cat > "$DEST_DIR/reload.sh" << 'EOF'
@@ -153,12 +167,21 @@ set -euo pipefail
 SCRIPT_DIR="$(dirname "$0")"
 cd "$SCRIPT_DIR"
 
+# Load deploy configuration
+if [[ -f "deploy.conf" ]]; then
+  source deploy.conf
+else
+  echo "⚠️  deploy.conf not found, using default settings"
+  RCON_COMMAND="/home/man10/mc_net/dev/command"
+  SERVER_NAME="dev"
+fi
+
 # Reload plugin via PlugManX
 PLUGIN_NAME=$(basename build/libs/*Plugin-*.jar .jar | sed 's/-[0-9].*//')
-echo "🔄 Reloading plugin: $PLUGIN_NAME"
-/home/man10/mc_net/dev/command "plugman reload $PLUGIN_NAME" || {
+echo "🔄 Reloading plugin: $PLUGIN_NAME on ${SERVER_NAME}"
+"${RCON_COMMAND}" "plugman reload $PLUGIN_NAME" || {
   echo "⚠️  Reload failed, trying load instead..."
-  /home/man10/mc_net/dev/command "plugman load $PLUGIN_NAME"
+  "${RCON_COMMAND}" "plugman load $PLUGIN_NAME"
 }
 EOF
 
