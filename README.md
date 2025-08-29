@@ -146,8 +146,20 @@ ls -la build/libs/
 # プラグイン名が正しいか確認
 ```
 
-## 参考リンク
+## 🤖 AI開発エージェント向け
 
+**重要**: AI開発エージェント（Claude、ChatGPT等）を使用してプラグイン開発を行う場合は、必ず **[AGENTS.md](AGENTS.md)** を参照してください。
+
+### 📋 AI開発者向けガイド
+- **[AGENTS.md](AGENTS.md)**: 包括的ルール・コーディング規約・品質基準
+- **命名規則**: PascalCase/lowercase統一  
+- **Man10標準**: 権限・メッセージ・設定形式
+- **品質チェック**: 必須実行項目・禁止事項
+- **標準フロー**: テンプレート→./new.sh→開発→./run.sh
+
+## 📚 参考リンク
+
+- **[AGENTS.md](AGENTS.md)** - AI開発エージェント向けガイドライン
 - [Paper API ドキュメント](https://docs.papermc.io/)
 - [Bukkit API リファレンス](https://hub.spigotmc.org/javadocs/bukkit/)
 - [Kotlin 公式ドキュメント](https://kotlinlang.org/docs/)
