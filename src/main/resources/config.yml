@@ -1,0 +1,23 @@
+# TemplatePlugin 設定ファイル
+# このファイルはプラグインの動作をカスタマイズするために使用されます
+
+# プレイヤー参加時のウェルカムメッセージ
+# プレイヤーがサーバーに参加した際に表示されるメッセージです
+welcomeMessage: "Welcome to Man10!"
+
+# プラグインの有効化/無効化
+# プラグインの各機能を個別に有効化/無効化できます
+features:
+  # コマンド機能を有効にするか
+  enableCommands: true
+  # プレイヤー参加イベントを有効にするか  
+  enableJoinMessages: true
+
+# メッセージの色設定
+# Minecraft のカラーコード（&a, &b, &c等）を使用可能
+colors:
+  # プレフィックスの色
+  prefix: "&a"
+  # メッセージテキストの色
+  text: "&f"
+

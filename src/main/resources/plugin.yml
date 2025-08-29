@@ -1,0 +1,29 @@
+name: TemplatePlugin
+main: red.man10.template.TemplatePlugin
+version: ${version}
+api-version: '1.21'
+authors: [ man10 ]
+description: "Man10サーバー用プラグインテンプレート - 新しいプラグイン開発のベース"
+website: "https://man10.red"
+
+# 依存関係の設定
+# depend: []        # 必須の依存プラグイン
+# softdepend: []    # オプションの依存プラグイン
+
+# コマンド定義
+commands:
+  template:
+    description: "テンプレートプラグインのメインコマンド"
+    usage: "/template - プラグインの動作テスト"
+    aliases: [ tpl ]
+    permission: template.use
+    permission-message: "このコマンドを使用する権限がありません"
+
+# 権限の定義
+permissions:
+  template.use:
+    description: "テンプレートコマンドの使用権限"
+    default: true
+  template.admin:
+    description: "テンプレートプラグインの管理権限" 
+    default: op

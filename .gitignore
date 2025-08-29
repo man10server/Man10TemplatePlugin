@@ -1,0 +1,17 @@
+# Build outputs
+build/
+.gradle/
+.kotlin/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test plugins (created by new.sh)
+*Plugin/
+!TemplatePlugin/
