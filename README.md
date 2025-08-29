@@ -74,6 +74,51 @@ cd ../MyAwesomePlugin
 ./run.sh
 ```
 
+### 🎯 デプロイ先設定
+
+プラグイン作成後、デプロイ先を設定する必要があります：
+
+#### **📋 設定ファイル編集**
+```bash
+# デプロイ設定を編集
+vim deploy.conf  # または nano deploy.conf
+```
+
+#### **🔧 主要設定項目**
+```bash
+# デプロイ先ディレクトリ（プラグインJARファイルのコピー先）
+DEPLOY_TARGET="/home/man10/mc_net/dev/server/plugins"
+
+# RCON コマンド実行パス（PlugManX用リロード）
+RCON_COMMAND="/home/man10/mc_net/dev/command"
+
+# サーバー名（ログ表示用）
+SERVER_NAME="dev"
+```
+
+#### **🏷️ 環境別設定例**
+```bash
+# 開発環境（デフォルト）
+DEPLOY_TARGET="/home/man10/mc_net/dev/server/plugins"
+RCON_COMMAND="/home/man10/mc_net/dev/command"
+SERVER_NAME="dev"
+
+# 本番環境
+DEPLOY_TARGET="/home/man10/mc_net/main/server/plugins"
+RCON_COMMAND="/home/man10/mc_net/main/command"
+SERVER_NAME="main"
+
+# テスト環境
+DEPLOY_TARGET="/home/man10/mc_net/test/server/plugins"
+RCON_COMMAND="/home/man10/mc_net/test/command"
+SERVER_NAME="test"
+
+# ローカル開発環境
+DEPLOY_TARGET="/home/user/minecraft/plugins"
+RCON_COMMAND="/home/user/minecraft/rcon"
+SERVER_NAME="local"
+```
+
 ### サーバー内コマンド
 ```
 /template      # 基本的な挨拶メッセージを表示

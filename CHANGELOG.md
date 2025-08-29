@@ -68,3 +68,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Removed`: 削除された機能
 - `Fixed`: バグ修正
 - `Security`: セキュリティ関連の修正
+
+---
+
+## 📦 リリース手順
+
+### 🎯 自動リリース（推奨）
+
+#### **1. タグ作成・プッシュ**
+```bash
+# バージョン更新
+echo "1.1.0" > VERSION
+
+# コミット
+git add VERSION CHANGELOG.md
+git commit -m "release: v1.1.0
+
+✨ 新機能:
+- 機能1追加
+- 機能2改善
+
+🐛 バグ修正:
+- 問題1修正
+- 問題2解決"
+
+# タグ作成（GitHubアクション自動実行）
+git tag -a v1.1.0 -m "v1.1.0: 新機能追加・バグ修正"
+git push origin main
+git push origin v1.1.0
+```
+
+#### **2. GitHubアクション自動実行**
+- ✅ **ビルド**: Gradle自動実行
+- ✅ **リリース作成**: GitHub Release自動作成
+- ✅ **JAR添付**: プラグインファイル自動添付
+- ✅ **リリースノート**: 自動生成
+
+#### **3. リリース完了** 🎉
+- GitHub Releasesページで確認
+- JARファイルのダウンロード可能
+- 変更履歴・インストール手順を自動表示

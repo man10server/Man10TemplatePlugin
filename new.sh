@@ -1,47 +1,50 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Create new plugin from TemplatePlugin
-# Usage: new.sh <PluginName> <slug> [destination]
+# Man10 プラグインテンプレートから新しいプラグインを作成
+# 使用方法: new.sh <プラグイン名> <スラッグ> [作成先]
 
 if [[ $# -lt 2 || $# -gt 3 ]]; then
-  echo "Usage: $0 <PluginName> <slug> [destination]"
-  echo "Example: $0 MyAwesome myawesome"
-  echo "Example: $0 MyAwesome myawesome /path/to/projects"
+  echo "使用方法: $0 <プラグイン名> <スラッグ> [作成先]"
+  echo "例: $0 MyAwesome myawesome"
+  echo "例: $0 MyAwesome myawesome /path/to/projects"
   echo ""
-  echo "Creates: MyAwesomePlugin/ directory with complete plugin setup"
+  echo "作成されるもの: MyAwesomePlugin/ ディレクトリ（完全なプラグイン環境）"
+  echo ""
+  echo "プラグイン名: PascalCase（例: ChatFilter, Economy）"
+  echo "スラッグ: lowercase（例: chatfilter, economy）"
   exit 1
 fi
 
 BaseName="$1"
 slug="$2"
-DEST_BASE="${3:-..}"  # Default to parent directory
+DEST_BASE="${3:-..}"  # 親ディレクトリがデフォルト
 
-# Source is current directory (TemplatePlugin)
+# ソースは現在のディレクトリ（TemplatePlugin）
 SRC_DIR="."
 DEST_DIR="${DEST_BASE}/${BaseName}Plugin"
 
-# Verify we're in Man10TemplatePlugin directory
+# Man10TemplatePluginディレクトリ内で実行されているか確認
 if [[ ! -f "src/main/kotlin/red/man10/template/TemplatePlugin.kt" ]]; then
-  echo "❌ Error: This script must be run from within the Man10TemplatePlugin directory"
-  echo "💡 Expected to find: src/main/kotlin/red/man10/template/TemplatePlugin.kt"
+  echo "❌ エラー: このスクリプトはMan10TemplatePluginディレクトリ内で実行してください"
+  echo "💡 必要なファイル: src/main/kotlin/red/man10/template/TemplatePlugin.kt"
   exit 1
 fi
 
 if [[ -e "$DEST_DIR" ]]; then 
-  echo "❌ destination exists: $DEST_DIR" 1>&2
+  echo "❌ 作成先が既に存在します: $DEST_DIR" 1>&2
   exit 1
 fi
 
-echo "🎯 Creating plugin: ${BaseName}Plugin"
-echo "📂 Source: Man10TemplatePlugin (current directory)"
-echo "📁 Destination: $DEST_DIR"
+echo "🎯 プラグイン作成中: ${BaseName}Plugin"
+echo "📂 ソース: Man10TemplatePlugin (現在のディレクトリ)"
+echo "📁 作成先: $DEST_DIR"
 
-# Create destination directory
+# 作成先ディレクトリにコピー
 cp -r "$SRC_DIR" "$DEST_DIR"
 
-# Clean up build artifacts, git, and template-specific files
-echo "🧹 Cleaning up build artifacts and template files..."
+# ビルド成果物、git、テンプレート固有ファイルをクリーンアップ
+echo "🧹 ビルド成果物とテンプレートファイルをクリーンアップ中..."
 rm -rf "$DEST_DIR/build"
 rm -rf "$DEST_DIR/.gradle"
 rm -rf "$DEST_DIR/.kotlin"
@@ -49,8 +52,8 @@ rm -rf "$DEST_DIR/.git"
 rm -f "$DEST_DIR/new.sh"
 rm -f "$DEST_DIR/README-template.md"
 
-# Copy deploy configuration template
-echo "📋 Setting up deploy configuration..."
+# デプロイ設定テンプレートをコピー
+echo "📋 デプロイ設定をセットアップ中..."
 cp "$SRC_DIR/deploy.conf" "$DEST_DIR/deploy.conf"
 
 # Rename package directory
@@ -200,18 +203,30 @@ EOF
 # Make scripts executable
 chmod +x "$DEST_DIR"/*.sh
 
-echo "✨ Plugin ready!"
+echo "✨ プラグイン作成完了！"
 echo ""
-echo "🎯 Created: $(basename "$DEST_DIR")"
-echo "📁 Location: $DEST_DIR"
+echo "🎯 作成されたプラグイン: $(basename "$DEST_DIR")"
+echo "📁 場所: $DEST_DIR"
 echo ""
-echo "🚀 Quick start:"
-echo "  cd $DEST_DIR"
+echo "🚀 クイックスタート:"
 echo "  ./run.sh     # ビルド→デプロイ→リロード"
 echo ""
-echo "📝 Individual commands:"
+echo "📝 個別コマンド:"
 echo "  ./build.sh   # ビルドのみ"
 echo "  ./deploy.sh  # デプロイのみ"
 echo "  ./reload.sh  # リロードのみ"
 echo ""
-echo "💡 Now run: cd $DEST_DIR"
+echo "🎉 プラグインディレクトリに移動します..."
+
+# 作成したプラグインディレクトリに自動移動
+cd "$DEST_DIR"
+
+echo "📂 現在のディレクトリ: $(pwd)"
+echo "💡 今すぐ開発を始められます！"
+echo ""
+echo "🎯 次のステップ:"
+echo "  1. vim deploy.conf     # デプロイ設定を確認・編集"
+echo "  2. ./run.sh           # ビルド→デプロイ→テスト"
+
+# 新しいシェルを起動して、ユーザーが作成したディレクトリで作業を続けられるようにする
+exec $SHELL
